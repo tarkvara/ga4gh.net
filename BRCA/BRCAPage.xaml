@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BRCA" x:Class="BRCA.BRCAPage">
+	<StackLayout Orientation="Vertical" Padding="15">
+		<Button Text="Query Beacons" VerticalOptions="Center" HorizontalOptions="Center" Clicked="HandleQueryBeaconsClicked"/>
+		<ListView x:Name="VariantList" HasUnevenRows="true" SeparatorVisibility="None">
+			<ListView.Header>
+				<Grid Padding="3">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="5*"/>
+						<ColumnDefinition Width="5*"/>
+						<ColumnDefinition Width="5*"/>
+						<ColumnDefinition Width="5*"/>
+						<ColumnDefinition Width="5*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<Label Text="Variant ID" Grid.Column="0" FontSize="-2" FontAttributes="Bold"/>
+					<Label Text="Variant Set ID" Grid.Column="1" FontSize="-2" FontAttributes="Bold"/>
+					<Label Text="Reference" Grid.Column="2" FontSize="-2" FontAttributes="Bold"/>
+					<Label Text="Start" Grid.Column="3" FontSize="-2" FontAttributes="Bold"/>
+					<Label Text="End" Grid.Column="4" FontSize="-2" FontAttributes="Bold"/>
+				</Grid>
+			</ListView.Header>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Grid Padding="3">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="5*"/>
+								<ColumnDefinition Width="5*"/>
+								<ColumnDefinition Width="5*"/>
+								<ColumnDefinition Width="5*"/>
+								<ColumnDefinition Width="5*"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"/>
+							</Grid.RowDefinitions>
+							<Label Text="{Binding Variant.ID}" Grid.Column="0" FontSize="-2"/>
+							<Label Text="{Binding Variant.VariantSetID}" Grid.Column="1" FontSize="-2"/>
+							<Label Text="{Binding Variant.ReferenceName}" Grid.Column="2" FontSize="-2"/>							
+							<Label Text="{Binding Variant.Start}" Grid.Column="3" FontSize="-2"/>
+							<Label Text="{Binding Variant.End}" Grid.Column="4" FontSize="-2"/>
+						</Grid>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+			<ListView.Footer>
+				<local:ActivityCard x:Name="ActivityCard" IsVisible="false"/>
+			</ListView.Footer>
+		</ListView>
+	</StackLayout>
+</ContentPage>

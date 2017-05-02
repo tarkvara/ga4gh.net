@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A0DEF4CE-2466-4312-801E-B5B2A42E1287}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GA4GH.Client</RootNamespace>
+    <AssemblyName>GA4GH</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AlleleAnnotationService.cs" />
+    <Compile Include="AlleleLocation.cs" />
+    <Compile Include="Analysis.cs" />
+    <Compile Include="AnalysisResult.cs" />
+    <Compile Include="AttributeValue.cs" />
+    <Compile Include="AttributeValueList.cs" />
+    <Compile Include="Attributes.cs" />
+    <Compile Include="BioMetadataService.cs" />
+    <Compile Include="Biosample.cs" />
+    <Compile Include="Call.cs" />
+    <Compile Include="CallSet.cs" />
+    <Compile Include="CigarUnit.cs" />
+    <Compile Include="CigarUnitOperation.cs" />
+    <Compile Include="Dataset.cs" />
+    <Compile Include="Experiment.cs" />
+    <Compile Include="ExpressionLevel.cs" />
+    <Compile Include="ExpressionUnit.cs" />
+    <Compile Include="ExternalIdentifier.cs" />
+    <Compile Include="Feature.cs" />
+    <Compile Include="FeatureSet.cs" />
+    <Compile Include="GetBiosampleRequest.cs" />
+    <Compile Include="GetCallSetRequest.cs" />
+    <Compile Include="GetDatasetRequest.cs" />
+    <Compile Include="GetExpressionLevelRequest.cs" />
+    <Compile Include="GetFeatureRequest.cs" />
+    <Compile Include="GetFeatureSetRequest.cs" />
+    <Compile Include="GetIndividualRequest.cs" />
+    <Compile Include="GetRNAQuantificationRequest.cs" />
+    <Compile Include="GetRNAQuantificationSetRequest.cs" />
+    <Compile Include="GetReadGroupSetRequest.cs" />
+    <Compile Include="GetReferenceRequest.cs" />
+    <Compile Include="GetReferenceSetRequest.cs" />
+    <Compile Include="GetVariantAnnotationSetRequest.cs" />
+    <Compile Include="GetVariantRequest.cs" />
+    <Compile Include="GetVariantSetRequest.cs" />
+    <Compile Include="HGVSAnnotation.cs" />
+    <Compile Include="Individual.cs" />
+    <Compile Include="LinearAlignment.cs" />
+    <Compile Include="ListReferenceBasesRequest.cs" />
+    <Compile Include="ListReferenceBasesResponse.cs" />
+    <Compile Include="MetadataService.cs" />
+    <Compile Include="NullValue.cs" />
+    <Compile Include="OntologyTerm.cs" />
+    <Compile Include="Position.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="ProtobufListValue.cs" />
+    <Compile Include="ProtobufStruct.cs" />
+    <Compile Include="ProtobufValue.cs" />
+    <Compile Include="RNAQuantification.cs" />
+    <Compile Include="RNAQuantificationService.cs" />
+    <Compile Include="RNAQuantificationSet.cs" />
+    <Compile Include="ReadAlignment.cs" />
+    <Compile Include="ReadGroup.cs" />
+    <Compile Include="ReadGroupSet.cs" />
+    <Compile Include="ReadService.cs" />
+    <Compile Include="ReadStats.cs" />
+    <Compile Include="Reference.cs" />
+    <Compile Include="ReferenceService.cs" />
+    <Compile Include="ReferenceSet.cs" />
+    <Compile Include="SearchBiosamplesRequest.cs" />
+    <Compile Include="SearchBiosamplesResponse.cs" />
+    <Compile Include="SearchCallSetsRequest.cs" />
+    <Compile Include="SearchCallSetsResponse.cs" />
+    <Compile Include="SearchDatasetsRequest.cs" />
+    <Compile Include="SearchDatasetsResponse.cs" />
+    <Compile Include="SearchExpressionLevelsRequest.cs" />
+    <Compile Include="SearchExpressionLevelsResponse.cs" />
+    <Compile Include="SearchFeatureSetsRequest.cs" />
+    <Compile Include="SearchFeatureSetsResponse.cs" />
+    <Compile Include="SearchFeaturesRequest.cs" />
+    <Compile Include="SearchFeaturesResponse.cs" />
+    <Compile Include="SearchIndividualsRequest.cs" />
+    <Compile Include="SearchIndividualsResponse.cs" />
+    <Compile Include="SearchRNAQuantificationSetsRequest.cs" />
+    <Compile Include="SearchRNAQuantificationSetsResponse.cs" />
+    <Compile Include="SearchRNAQuantificationsRequest.cs" />
+    <Compile Include="SearchRNAQuantificationsResponse.cs" />
+    <Compile Include="SearchReadGroupSetsRequest.cs" />
+    <Compile Include="SearchReadGroupSetsResponse.cs" />
+    <Compile Include="SearchReadsRequest.cs" />
+    <Compile Include="SearchReadsResponse.cs" />
+    <Compile Include="SearchReferenceSetsRequest.cs" />
+    <Compile Include="SearchReferenceSetsResponse.cs" />
+    <Compile Include="SearchReferencesRequest.cs" />
+    <Compile Include="SearchReferencesResponse.cs" />
+    <Compile Include="SearchVariantAnnotationSetsRequest.cs" />
+    <Compile Include="SearchVariantAnnotationSetsResponse.cs" />
+    <Compile Include="SearchVariantAnnotationsRequest.cs" />
+    <Compile Include="SearchVariantAnnotationsResponse.cs" />
+    <Compile Include="SearchVariantSetsRequest.cs" />
+    <Compile Include="SearchVariantSetsResponse.cs" />
+    <Compile Include="SearchVariantsRequest.cs" />
+    <Compile Include="SearchVariantsResponse.cs" />
+    <Compile Include="SequenceAnnotationService.cs" />
+    <Compile Include="Strand.cs" />
+    <Compile Include="SwaggerException.cs" />
+    <Compile Include="TranscriptEffect.cs" />
+    <Compile Include="Variant.cs" />
+    <Compile Include="VariantAnnotation.cs" />
+    <Compile Include="VariantAnnotationSet.cs" />
+    <Compile Include="VariantService.cs" />
+    <Compile Include="VariantSet.cs" />
+    <Compile Include="VariantSetMetadata.cs" />
+    <Compile Include="GA4GHUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\BRCA\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>
