@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{6E9527F1-00AB-45E7-9F8D-3FCA23D71DBD}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BRCA Status">
+    <Files>
+      <File FileName="BRCA Status" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.BRCA.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F2709D1D-5854-4D72-8643-5C9213537E39" />
+  <MultiItemStartupConfigurations />
+</Properties>

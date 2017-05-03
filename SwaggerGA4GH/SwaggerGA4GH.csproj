@@ -31,25 +31,25 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\BRCA\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NJsonSchema">
-      <HintPath>..\BRCA\packages\NJsonSchema.8.9.6275.22295\lib\net45\NJsonSchema.dll</HintPath>
+      <HintPath>..\BRCA\packages\NJsonSchema.8.34.6331.29178\lib\net45\NJsonSchema.dll</HintPath>
     </Reference>
     <Reference Include="NJsonSchema.CodeGeneration">
-      <HintPath>..\BRCA\packages\NJsonSchema.CodeGeneration.8.9.6275.22314\lib\portable45-net45+win8+wp8+wpa81\NJsonSchema.CodeGeneration.dll</HintPath>
+      <HintPath>..\BRCA\packages\NJsonSchema.CodeGeneration.8.34.6331.29195\lib\portable45-net45+win8+wp8+wpa81\NJsonSchema.CodeGeneration.dll</HintPath>
     </Reference>
     <Reference Include="NJsonSchema.CodeGeneration.CSharp">
-      <HintPath>..\BRCA\packages\NJsonSchema.CodeGeneration.CSharp.8.9.6275.22314\lib\portable45-net45+win8+wp8+wpa81\NJsonSchema.CodeGeneration.CSharp.dll</HintPath>
+      <HintPath>..\BRCA\packages\NJsonSchema.CodeGeneration.CSharp.8.34.6331.29196\lib\portable45-net45+win8+wp8+wpa81\NJsonSchema.CodeGeneration.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="NSwag.Core">
-      <HintPath>..\BRCA\packages\NSwag.Core.9.10.6277.17570\lib\portable45-net45+win8+wp8+wpa81\NSwag.Core.dll</HintPath>
+      <HintPath>..\BRCA\packages\NSwag.Core.10.6.6324.28497\lib\portable45-net45+win8+wp8+wpa81\NSwag.Core.dll</HintPath>
     </Reference>
     <Reference Include="NSwag.CodeGeneration">
-      <HintPath>..\BRCA\packages\NSwag.CodeGeneration.9.10.6277.17570\lib\portable45-net45+win8+wp8+wpa81\NSwag.CodeGeneration.dll</HintPath>
+      <HintPath>..\BRCA\packages\NSwag.CodeGeneration.10.6.6324.28497\lib\portable45-net45+win8+wp8+wpa81\NSwag.CodeGeneration.dll</HintPath>
     </Reference>
     <Reference Include="NSwag.CodeGeneration.CSharp">
-      <HintPath>..\BRCA\packages\NSwag.CodeGeneration.CSharp.9.10.6277.17571\lib\portable45-net45+win8+wp8+wpa81\NSwag.CodeGeneration.CSharp.dll</HintPath>
+      <HintPath>..\BRCA\packages\NSwag.CodeGeneration.CSharp.10.6.6324.28500\lib\portable45-net45+win8+wp8+wpa81\NSwag.CodeGeneration.CSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
