@@ -1,6 +1,6 @@
 namespace GA4GH.Client {
 	/// <summary>This is the response from 'POST /rnaquantifications/search' expressed as JSON.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class SearchRNAQuantificationsResponse : System.ComponentModel.INotifyPropertyChanged
 	{
 		private System.Collections.ObjectModel.ObservableCollection<RNAQuantification> _rnaQuantifications;

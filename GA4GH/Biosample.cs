@@ -1,5 +1,5 @@
 namespace GA4GH.Client {
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class Biosample : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;
@@ -11,6 +11,7 @@ namespace GA4GH.Client {
 		private string _updated;
 		private string _individualId;
 		private Attributes _attributes;
+		private Age _individualAgeAtCollection;
 	
 		/// <summary>The Biosample :ref:`id <apidesign_object_ids>`. This is unique in the
 		/// context of the server instance.</summary>
@@ -105,7 +106,8 @@ namespace GA4GH.Client {
 			}
 		}
 	
-		/// <summary>The :ref:`ISO 8601<metadata_date_time>` time at which this Biosample record was updated.</summary>
+		/// <summary>The :ref:`ISO 8601<metadata_date_time>` time at which this Biosample record was 
+		/// updated.</summary>
 		[Newtonsoft.Json.JsonProperty("updated", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
 		public string Updated
 		{
@@ -153,6 +155,24 @@ namespace GA4GH.Client {
 				if (_attributes != value)
 				{
 					_attributes = value; 
+					RaisePropertyChanged();
+				}
+			}
+		}
+	
+		/// <summary>An age object describing the age of the individual this biosample was
+		/// derived from at the time of collection. The Age object allows the encoding
+		/// of the age either as ISO8601 duraion or time interval (preferred), or
+		/// as ontology term object.</summary>
+		[Newtonsoft.Json.JsonProperty("individualAgeAtCollection", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public Age IndividualAgeAtCollection
+		{
+			get { return _individualAgeAtCollection; }
+			set 
+			{
+				if (_individualAgeAtCollection != value)
+				{
+					_individualAgeAtCollection = value; 
 					RaisePropertyChanged();
 				}
 			}

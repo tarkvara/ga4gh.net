@@ -2,7 +2,7 @@ namespace GA4GH.Client {
 	/// <summary>`ListValue` is a wrapper around a repeated field of values.
 	/// 
 	/// The JSON representation for `ListValue` is JSON array.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class ProtobufListValue : System.ComponentModel.INotifyPropertyChanged
 	{
 		private System.Collections.ObjectModel.ObservableCollection<ProtobufValue> _values;

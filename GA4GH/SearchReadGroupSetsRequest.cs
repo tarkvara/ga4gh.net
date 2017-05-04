@@ -6,7 +6,7 @@ namespace GA4GH.Client {
 	///   will return a `404` HTTP status code (`NOT_FOUND`).
 	/// - If searching by other attributes, e.g. `name`, and no matches are found, the
 	///   method will return a `200` HTTP status code (`OK`) with an empty result list.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class SearchReadGroupSetsRequest : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _datasetId;

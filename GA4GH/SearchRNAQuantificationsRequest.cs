@@ -1,7 +1,7 @@
 namespace GA4GH.Client {
 	/// <summary>This request maps to the body of 'POST /rnaquantifications/search'
 	/// as JSON.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class SearchRNAQuantificationsRequest : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _rnaQuantificationSetId;

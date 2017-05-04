@@ -1,5 +1,5 @@
 namespace GA4GH.Client {
-	[System.CodeDom.Compiler.GeneratedCode("NSwag", "9.10.6277.17570")]
+	[System.CodeDom.Compiler.GeneratedCode("NSwag", "10.6.6324.28497")]
 	public class MetadataService 
 	{
 		private string _baseUrl = "";
@@ -17,9 +17,9 @@ namespace GA4GH.Client {
 			set { _baseUrl = value; }
 		}
 	
-		void PrepareRequest(System.Net.Http.HttpClient request, string url) {}
-		void PrepareRequest(System.Net.Http.HttpClient request, System.Text.StringBuilder urlBuilder) {}
-		void ProcessResponse(System.Net.Http.HttpClient request, System.Net.Http.HttpResponseMessage response) {}
+		void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url) {}
+		void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder) {}
+		void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response) {}
 	
 		/// <summary>Gets a list of `Dataset` matching the search criteria.</summary>
 		/// <exception cref="SwaggerException">A server side error occurred.</exception>
@@ -41,16 +41,17 @@ namespace GA4GH.Client {
 			{
 				using (var request_ = new System.Net.Http.HttpRequestMessage())
 				{
-					PrepareRequest(client_, urlBuilder_);
-					var url_ = urlBuilder_.ToString();
-					PrepareRequest(client_, url_);
-	
 					var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body));
 					content_.Headers.ContentType.MediaType = "application/json";
 					request_.Content = content_;
 					request_.Method = new System.Net.Http.HttpMethod("POST");
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
 					request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+	
+					PrepareRequest(client_, request_, urlBuilder_);
+					var url_ = urlBuilder_.ToString();
+					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+					PrepareRequest(client_, request_, url_);
+	
 					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
 					try
 					{
@@ -122,13 +123,14 @@ namespace GA4GH.Client {
 			{
 				using (var request_ = new System.Net.Http.HttpRequestMessage())
 				{
-					PrepareRequest(client_, urlBuilder_);
-					var url_ = urlBuilder_.ToString();
-					PrepareRequest(client_, url_);
-	
 					request_.Method = new System.Net.Http.HttpMethod("GET");
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
 					request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+	
+					PrepareRequest(client_, request_, urlBuilder_);
+					var url_ = urlBuilder_.ToString();
+					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+					PrepareRequest(client_, request_, url_);
+	
 					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
 					try
 					{

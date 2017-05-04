@@ -1,0 +1,746 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ga4gh/read_service.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v0.6.0a10/readgroupsets/search": {
+      "post": {
+        "summary": "Gets a list of `ReadGroupSet` matching the search criteria.",
+        "description": "`POST /readgroupsets/search` must accept a JSON version of\n`SearchReadGroupSetsRequest` as the post body and will return a JSON\nversion of `SearchReadGroupSetsResponse` . Only readgroups that\nmatch an optionally supplied biosampleId will be included in the\nresponse.",
+        "operationId": "SearchReadGroupSets",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchReadGroupSetsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchReadGroupSetsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ReadService"
+        ]
+      }
+    },
+    "/v0.6.0a10/readgroupsets/{read_group_set_id}": {
+      "get": {
+        "summary": "Gets a `ReadGroupSet` by ID.",
+        "description": "`GET /readgroupsets/{read_group_set_id}` will return a JSON version of\n`ReadGroupSet`.",
+        "operationId": "GetReadGroupSet",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ga4ghReadGroupSet"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "read_group_set_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ReadService"
+        ]
+      }
+    },
+    "/v0.6.0a10/reads/search": {
+      "post": {
+        "summary": "Gets a list of `ReadAlignment` s for one or more `ReadGroup` s.",
+        "description": "`searchReads` operates over a genomic coordinate space of reference sequence\nand position defined by the `Reference` s to which the requested `ReadGroup` s are\naligned.\n\nIf a target positional range is specified, search returns all reads whose\nalignment to the reference genome *overlap* the range. A query which specifies\nonly read group IDs yields all reads in those read groups, including unmapped\nreads.\n\nAll reads returned (including reads on subsequent pages) are ordered by genomic\ncoordinate (by reference sequence, then position). Reads with equivalent genomic\ncoordinates are returned in an unspecified order. This order must be consistent\nfor a given repository, such that two queries for the same content (regardless\nof page size) yield reads in the same order across their respective streams of\npaginated responses.\n\n`POST /reads/search` must accept a JSON version of `SearchReadsRequest` as\nthe post body and will return a JSON version of `SearchReadsResponse`.",
+        "operationId": "SearchReads",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchReadsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchReadsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ReadService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CigarUnitOperation": {
+      "type": "string",
+      "enum": [
+        "OPERATION_UNSPECIFIED",
+        "ALIGNMENT_MATCH",
+        "INSERT",
+        "DELETE",
+        "SKIP",
+        "CLIP_SOFT",
+        "CLIP_HARD",
+        "PAD",
+        "SEQUENCE_MATCH",
+        "SEQUENCE_MISMATCH"
+      ],
+      "default": "OPERATION_UNSPECIFIED",
+      "description": "Describes the different types of CIGAR alignment operations that exist.\nUsed wherever CIGAR alignments are used.\n\n - OPERATION_UNSPECIFIED: The null operation.\n - ALIGNMENT_MATCH: An alignment match indicates that a sequence can be aligned to the\nreference without evidence of an INDEL. Unlike the\n`SEQUENCE_MATCH` and `SEQUENCE_MISMATCH` operators,\nthe `ALIGNMENT_MATCH` operator does not indicate whether the\nreference and read sequences are an exact match. This operator is\nequivalent to SAM's `M`.\n - INSERT: The insert operator indicates that the read contains evidence of bases\nbeing inserted into the reference. This operator is equivalent to SAM's\n`I`.\n - DELETE: The delete operator indicates that the read contains evidence of bases\nbeing deleted from the reference. This operator is equivalent to SAM's\n`D`.\n - SKIP: The skip operator indicates that this read skips a long segment of the\nreference, but the bases have not been deleted. This operator is commonly\nused when working with RNA-seq data, where reads may skip long segments\nof the reference between exons. This operator is equivalent to SAM's\n`N`.\n - CLIP_SOFT: The soft clip operator indicates that bases at the start/end of a read\nhave not been considered during alignment. This may occur if the majority\nof a read maps, except for low quality bases at the start/end of a read.\nThis operator is equivalent to SAM's `S`. Bases that are soft\nclipped will still be stored in the read.\n - CLIP_HARD: The hard clip operator indicates that bases at the start/end of a read\nhave been omitted from this alignment. This may occur if this linear\nalignment is part of a chimeric alignment, or if the read has been\ntrimmed (for example, during error correction or to trim poly-A tails for\nRNA-seq). This operator is equivalent to SAM's `H`.\n - PAD: The pad operator indicates that there is padding in an alignment. This\noperator is equivalent to SAM's `P`.\n - SEQUENCE_MATCH: This operator indicates that this portion of the aligned sequence exactly\nmatches the reference. This operator is equivalent to SAM's `=`.\n - SEQUENCE_MISMATCH: This operator indicates that this portion of the aligned sequence is an\nalignment match to the reference, but a sequence mismatch. This can\nindicate a SNP or a read error. This operator is equivalent to SAM's\n`X`."
+    },
+    "ga4ghAnalysis": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Formats of id | name | description | accessions are described in the\ndocumentation on general attributes and formats."
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "description": "The time at which this record was created, in ISO 8601 format."
+        },
+        "updated": {
+          "type": "string",
+          "description": "The time at which this record was last updated, in ISO 8601 format."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of analysis."
+        },
+        "software": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The software run to generate this analysis."
+        },
+        "attributes": {
+          "$ref": "#/definitions/ga4ghAttributes",
+          "description": "A map of additional analysis information."
+        }
+      },
+      "description": "An analysis contains an interpretation of one or several experiments. (e.g.\nSNVs, copy number variations, methylation status) together with information\nabout the methodology used."
+    },
+    "ga4ghAttributeValue": {
+      "type": "object",
+      "properties": {
+        "string_value": {
+          "type": "string"
+        },
+        "int64_value": {
+          "type": "string",
+          "format": "int64"
+        },
+        "int32_value": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "bool_value": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "double_value": {
+          "type": "number",
+          "format": "double"
+        },
+        "external_identifier": {
+          "$ref": "#/definitions/ga4ghExternalIdentifier"
+        },
+        "ontology_term": {
+          "$ref": "#/definitions/ga4ghOntologyTerm"
+        },
+        "experiment": {
+          "$ref": "#/definitions/ga4ghExperiment"
+        },
+        "program": {
+          "$ref": "#/definitions/ga4ghProgram"
+        },
+        "analysis": {
+          "$ref": "#/definitions/ga4ghAnalysis"
+        },
+        "null_value": {
+          "$ref": "#/definitions/ga4ghNullValue"
+        },
+        "attributes": {
+          "$ref": "#/definitions/ga4ghAttributes"
+        },
+        "attribute_list": {
+          "$ref": "#/definitions/ga4ghAttributeValueList"
+        }
+      },
+      "description": "Type defining a collection of attributes associated with various protocol\nrecords. Each attribute is a name that maps to an array of one or more\nvalues. Values are chosen from both internal protobuf types and GA4GH.\n Values should be split into array elements instead of using a separator\nsyntax that needs to parsed."
+    },
+    "ga4ghAttributeValueList": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghAttributeValue"
+          }
+        }
+      }
+    },
+    "ga4ghAttributes": {
+      "type": "object",
+      "properties": {
+        "attr": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ga4ghAttributeValueList"
+          }
+        }
+      }
+    },
+    "ga4ghCigarUnit": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "$ref": "#/definitions/CigarUnitOperation"
+        },
+        "operation_length": {
+          "type": "string",
+          "format": "int64",
+          "description": "The number of genomic bases that the operation runs for. Required."
+        },
+        "reference_sequence": {
+          "type": "string",
+          "description": "`referenceSequence` is only used at mismatches\n(`SEQUENCE_MISMATCH`) and deletions (`DELETE`).\nFilling this field replaces SAM's MD tag. If the relevant information is\nnot available, this field is unset."
+        }
+      },
+      "description": "A single CIGAR operation."
+    },
+    "ga4ghExperiment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "The experiment ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the experiment."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the experiment."
+        },
+        "message_create_time": {
+          "type": "string",
+          "title": "The time at which this message was created.\nFormat: ISO 8601, YYYY-MM-DDTHH:MM:SS.SSS (e.g. 2015-02-10T00:03:42.123Z)"
+        },
+        "message_update_time": {
+          "type": "string",
+          "title": "The time at which this message was last updated.\nFormat: ISO 8601, YYYY-MM-DDTHH:MM:SS.SSS (e.g. 2015-02-10T00:03:42.123Z)"
+        },
+        "run_time": {
+          "type": "string",
+          "title": "The time at which this experiment was performed.\nGranularity here is variable (e.g. date only).\nFormat: ISO 8601, YYYY-MM-DDTHH:MM:SS (e.g. 2015-02-10T00:03:42)"
+        },
+        "molecule": {
+          "type": "string",
+          "title": "The molecule examined in this experiment. (e.g. genomics DNA, total RNA)"
+        },
+        "strategy": {
+          "type": "string",
+          "title": "The experiment technique or strategy applied to the sample.\n(e.g. whole genome sequencing, RNA-seq, RIP-seq)"
+        },
+        "selection": {
+          "type": "string",
+          "title": "The method used to enrich the target. (e.g. immunoprecipitation, size\nfractionation, MNase digestion)"
+        },
+        "library": {
+          "type": "string",
+          "description": "The name of the library used as part of this experiment."
+        },
+        "library_layout": {
+          "type": "string",
+          "description": "The configuration of sequenced reads. (e.g. Single or Paired)."
+        },
+        "instrument_model": {
+          "type": "string",
+          "description": "The instrument model used as part of this experiment.\nThis maps to sequencing technology in BAM."
+        },
+        "instrument_data_file": {
+          "type": "string",
+          "title": "The data file generated by the instrument.\nTODO: This isn't actually a file is it?\nShould this be `instrumentData` instead?"
+        },
+        "sequencing_center": {
+          "type": "string",
+          "description": "The sequencing center used as part of this experiment."
+        },
+        "platform_unit": {
+          "type": "string",
+          "description": "The platform unit used as part of this experiment. This is a\nflowcell-barcode\nor slide unique identifier."
+        },
+        "attributes": {
+          "$ref": "#/definitions/ga4ghAttributes",
+          "description": "A map of additional experiment information."
+        }
+      },
+      "description": "An experimental preparation of a sample."
+    },
+    "ga4ghExternalIdentifier": {
+      "type": "object",
+      "properties": {
+        "database": {
+          "type": "string",
+          "description": "The source of the identifier, e.g. `Ensembl`."
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The ID defined by the external database, e.g. `ENST00000000000`."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the object or the database, e.g. `78`."
+        }
+      },
+      "title": "Identifier from a public database"
+    },
+    "ga4ghGetReadGroupSetRequest": {
+      "type": "object",
+      "properties": {
+        "read_group_set_id": {
+          "type": "string",
+          "description": "The ID of the `ReadGroupSet` to be retrieved."
+        }
+      },
+      "description": "This request maps to the URL `GET /readgroupsets/{read_group_set_id}`."
+    },
+    "ga4ghLinearAlignment": {
+      "type": "object",
+      "properties": {
+        "position": {
+          "$ref": "#/definitions/ga4ghPosition",
+          "description": "The position of this alignment."
+        },
+        "mapping_quality": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The mapping quality of this alignment, meaning the likelihood that the read\nmaps to this position.\n\nSpecifically, this is -10 log10 Pr(mapping position is wrong), rounded to\nthe nearest integer."
+        },
+        "cigar": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghCigarUnit"
+          },
+          "description": "Represents the local alignment of this sequence (alignment matches, indels,\netc)\nversus the reference."
+        }
+      },
+      "description": "A linear alignment describes the alignment of a read to a Reference, using a\nposition and CIGAR array."
+    },
+    "ga4ghNullValue": {
+      "type": "string",
+      "enum": [
+        "NULL_VALUE"
+      ],
+      "default": "NULL_VALUE",
+      "description": " - NULL_VALUE: Null value."
+    },
+    "ga4ghOntologyTerm": {
+      "type": "object",
+      "properties": {
+        "term_id": {
+          "type": "string",
+          "description": "Ontology term identifier - the CURIE for an ontology term. It\ndiffers from the standard GA4GH schema's :ref:`id \u003capidesign_object_ids\u003e`\nin that it is a CURIE pointing to an information resource outside of the\nscope of the schema or its resource implementation."
+        },
+        "term": {
+          "type": "string",
+          "description": "Ontology term - the label of the ontology term the termId is pointing to."
+        }
+      },
+      "title": "An ontology term describing an attribute. (e.g. the phenotype attribute\n'polydactyly' from HPO)"
+    },
+    "ga4ghPosition": {
+      "type": "object",
+      "properties": {
+        "reference_name": {
+          "type": "string",
+          "description": "The name of the `Reference` on which the `Position` is located."
+        },
+        "position": {
+          "type": "string",
+          "format": "int64",
+          "description": "The 0-based offset from the start of the forward strand for that\n`Reference`. Genomic positions are non-negative integers less than\n`Reference` length."
+        },
+        "strand": {
+          "$ref": "#/definitions/ga4ghStrand",
+          "description": "Strand the position is associated with."
+        }
+      },
+      "description": "A `Position` is an unoriented base in some `Reference`. A `Position` is\nrepresented by a `Reference` name, and a base number on that `Reference`\n(0-based)."
+    },
+    "ga4ghProgram": {
+      "type": "object",
+      "properties": {
+        "command_line": {
+          "type": "string",
+          "description": "The command line used to run this program."
+        },
+        "id": {
+          "type": "string",
+          "description": "The user specified ID of the program."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the program."
+        },
+        "prev_program_id": {
+          "type": "string",
+          "description": "The ID of the program run before this one."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the program run."
+        }
+      },
+      "description": "A Program describes software used in data processing or analysis."
+    },
+    "ga4ghReadAlignment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The read alignment ID. This ID is unique within the read group this\nalignment belongs to.\n\nFor performance reasons, this field may be omitted by a backend.\nIf provided, its intended use is to make caching and UI display easier for\ngenome browsers and other lightweight clients."
+        },
+        "read_group_id": {
+          "type": "string",
+          "title": "The ID of the read group this read belongs to.\n(Every read must belong to exactly one read group.)"
+        },
+        "fragment_name": {
+          "type": "string",
+          "description": "The fragment name. Equivalent to QNAME (query template name) in SAM."
+        },
+        "improper_placement": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "The orientation and the distance between reads from the fragment are\ninconsistent with the sequencing protocol (inverse of SAM flag 0x2)."
+        },
+        "duplicate_fragment": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "The fragment is a PCR or optical duplicate (SAM flag 0x400)."
+        },
+        "number_reads": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The number of reads in the fragment (extension to SAM flag 0x1)."
+        },
+        "fragment_length": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The observed length of the fragment, equivalent to TLEN in SAM."
+        },
+        "read_number": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The read ordinal in the fragment, 0-based and less than numberReads. This\nfield replaces SAM flag 0x40 and 0x80 and is intended to more cleanly\nrepresent multiple reads per fragment."
+        },
+        "failed_vendor_quality_checks": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "The read fails platform or vendor quality checks (SAM flag 0x200)."
+        },
+        "alignment": {
+          "$ref": "#/definitions/ga4ghLinearAlignment",
+          "description": "The alignment for this alignment message. This field will be null if the\nread is unmapped."
+        },
+        "secondary_alignment": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Whether this alignment is secondary. Equivalent to SAM flag 0x100.\nA secondary alignment represents an alternative to the primary alignment\nfor this read. Aligners may return secondary alignments if a read can map\nambiguously to multiple coordinates in the genome.\n\nBy convention, each read has one and only one alignment where both\nsecondaryAlignment and supplementaryAlignment are false."
+        },
+        "supplementary_alignment": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Whether this alignment is supplementary. Equivalent to SAM flag 0x800.\nSupplementary alignments are used in the representation of a chimeric\nalignment. In a chimeric alignment, a read is split into multiple\nlinear alignments that map to different reference contigs. The first\nlinear alignment in the read will be designated as the representative\nalignment; the remaining linear alignments will be designated as\nsupplementary alignments. These alignments may have different mapping\nquality scores.\n\nIn each linear alignment in a chimeric alignment, the read will be hard\nclipped. The `alignedSequence` and `alignedQuality` fields in the alignment\nmessage will only represent the bases for its respective linear alignment."
+        },
+        "aligned_sequence": {
+          "type": "string",
+          "description": "The bases of the read sequence contained in this alignment record\n(equivalent to SEQ in SAM).\n\n`alignedSequence` and `alignedQuality` may be shorter than the full read\nsequence and quality. This will occur if the alignment is part of a\nchimeric alignment, or if the read was trimmed. When this occurs, the CIGAR\nfor this read will begin/end with a hard clip operator that will indicate\nthe length of the excised sequence."
+        },
+        "aligned_quality": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": "The quality of the read sequence contained in this alignment message\n(equivalent to QUAL in SAM).\n\n`alignedSequence` and `alignedQuality` may be shorter than the full read\nsequence and quality. This will occur if the alignment is part of a\nchimeric alignment, or if the read was trimmed. When this occurs, the CIGAR\nfor this read will begin/end with a hard clip operator that will indicate\nthe length of the excised sequence."
+        },
+        "next_mate_position": {
+          "$ref": "#/definitions/ga4ghPosition",
+          "description": "The mapping of the primary alignment of the `(readNumber+1)%numberReads`\nread in the fragment. It replaces mate position and mate strand in SAM."
+        },
+        "attributes": {
+          "$ref": "#/definitions/ga4ghAttributes",
+          "description": "A map of additional information about the Alignment."
+        }
+      },
+      "description": "Each read alignment describes an alignment with additional information\nabout the fragment and the read. A read alignment object is equivalent to a\nline in a SAM file."
+    },
+    "ga4ghReadGroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The read group ID."
+        },
+        "dataset_id": {
+          "type": "string",
+          "description": "The ID of the dataset this read group belongs to."
+        },
+        "name": {
+          "type": "string",
+          "description": "The read group name."
+        },
+        "description": {
+          "type": "string",
+          "description": "The read group description."
+        },
+        "sample_name": {
+          "type": "string",
+          "description": "A name for the sample this read group's data were generated from.\nThis field contains an arbitrary string, typically\ncorresponding to the SM tag in a BAM file."
+        },
+        "biosample_id": {
+          "type": "string",
+          "description": "The Biosample this read group's data was generated from."
+        },
+        "experiment": {
+          "$ref": "#/definitions/ga4ghExperiment",
+          "description": "The experiment used to generate this read group."
+        },
+        "predicted_insert_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The predicted insert size of this read group."
+        },
+        "created": {
+          "type": "string",
+          "format": "int64",
+          "description": "The time at which this read group was created in milliseconds from the\nepoch."
+        },
+        "updated": {
+          "type": "string",
+          "format": "int64",
+          "description": "The time at which this read group was last updated in milliseconds\nfrom the epoch."
+        },
+        "stats": {
+          "$ref": "#/definitions/ga4ghReadStats",
+          "description": "Statistical data on reads in this read group."
+        },
+        "programs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghProgram"
+          },
+          "description": "Program can be used to track the provenance of how read data was generated."
+        },
+        "reference_set_id": {
+          "type": "string",
+          "description": "The ID of the reference set to which the reads in this read group are\naligned. Required if there are any read alignments."
+        },
+        "attributes": {
+          "$ref": "#/definitions/ga4ghAttributes",
+          "description": "A map of additional information about the Read Group."
+        }
+      },
+      "description": "A ReadGroup is a set of reads derived from one physical sequencing process."
+    },
+    "ga4ghReadGroupSet": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The read group set ID."
+        },
+        "dataset_id": {
+          "type": "string",
+          "description": "The ID of the dataset this read group set belongs to."
+        },
+        "name": {
+          "type": "string",
+          "description": "The read group set name."
+        },
+        "stats": {
+          "$ref": "#/definitions/ga4ghReadStats",
+          "description": "Statistical data on reads in this read group set."
+        },
+        "read_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghReadGroup"
+          },
+          "description": "The read groups in this set."
+        },
+        "attributes": {
+          "$ref": "#/definitions/ga4ghAttributes",
+          "description": "A map of additional information about the Read Group Set."
+        }
+      },
+      "description": "A ReadGroupSet is a logical collection of ReadGroups. Typically one\nReadGroupSet represents all the reads from one experimental sample."
+    },
+    "ga4ghReadStats": {
+      "type": "object",
+      "properties": {
+        "aligned_read_count": {
+          "type": "string",
+          "format": "int64",
+          "description": "The number of aligned reads."
+        },
+        "unaligned_read_count": {
+          "type": "string",
+          "format": "int64",
+          "description": "The number of unaligned reads."
+        },
+        "base_count": {
+          "type": "string",
+          "format": "int64",
+          "description": "The total number of bases.\nThis is equivalent to the sum of `alignedSequence.length` for all reads."
+        }
+      },
+      "description": "ReadStats can be used to provide summary statistics about read data."
+    },
+    "ga4ghSearchReadGroupSetsRequest": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "description": "The dataset to search."
+        },
+        "name": {
+          "type": "string",
+          "description": "Only return read group sets with this name (case-sensitive, exact match)."
+        },
+        "biosample_id": {
+          "type": "string",
+          "description": "Specifying the id of a Biosample record will return only readgroups\n with the given biosampleId."
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Specifies the maximum number of results to return in a single page.\nIf unspecified, a system default will be used."
+        },
+        "page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nTo get the next page of results, set this parameter to the value of\n`next_page_token` from the previous response."
+        }
+      },
+      "description": "This request maps to the body of `POST /readgroupsets/search` as JSON.\n\nTODO: Factor this out to a common API patterns section.\n- If searching by a resource ID, and that resource is not found, the method\n  will return a `404` HTTP status code (`NOT_FOUND`).\n- If searching by other attributes, e.g. `name`, and no matches are found, the\n  method will return a `200` HTTP status code (`OK`) with an empty result list."
+    },
+    "ga4ghSearchReadGroupSetsResponse": {
+      "type": "object",
+      "properties": {
+        "read_group_sets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghReadGroupSet"
+          },
+          "description": "The list of matching read group sets."
+        },
+        "next_page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nProvide this value in a subsequent request to return the next page of\nresults. This field will be empty if there aren't any additional results."
+        }
+      },
+      "description": "This is the response from `POST /readgroupsets/search` expressed as JSON."
+    },
+    "ga4ghSearchReadsRequest": {
+      "type": "object",
+      "properties": {
+        "read_group_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The ReadGroups to search. At least one id must be specified."
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "The reference to query. Leaving blank returns results from all\nreferences, including unmapped reads - this could be very large."
+        },
+        "start": {
+          "type": "string",
+          "format": "int64",
+          "description": "The start position (0-based) of this query.\nIf a reference is specified, this defaults to 0.\nGenomic positions are non-negative integers less than reference length.\nRequests spanning the join of circular genomes are represented as\ntwo requests one on each side of the join (position 0)."
+        },
+        "end": {
+          "type": "string",
+          "format": "int64",
+          "description": "The end position (0-based, exclusive) of this query.\nIf a reference is specified, this defaults to the\nreference's length."
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Specifies the maximum number of results to return in a single page.\nIf unspecified, a system default will be used."
+        },
+        "page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nTo get the next page of results, set this parameter to the value of\n`next_page_token` from the previous response."
+        }
+      },
+      "description": "******************  /reads  *********************\nThis request maps to the body of `POST /reads/search` as JSON.\n\nIf a reference is specified, all queried `ReadGroup`s must be aligned\nto `ReferenceSet`s containing that same `Reference`. If no reference is\nspecified, all `ReadGroup`s must be aligned to the same `ReferenceSet`."
+    },
+    "ga4ghSearchReadsResponse": {
+      "type": "object",
+      "properties": {
+        "alignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghReadAlignment"
+          },
+          "description": "The list of matching alignment messages, sorted by position.\nUnmapped reads, which have no position, are returned last."
+        },
+        "next_page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nProvide this value in a subsequent request to return the next page of\nresults. This field will be empty if there aren't any additional results."
+        }
+      },
+      "description": "This is the response from `POST /reads/search` expressed as JSON."
+    },
+    "ga4ghStrand": {
+      "type": "string",
+      "enum": [
+        "STRAND_UNSPECIFIED",
+        "NEG_STRAND",
+        "POS_STRAND"
+      ],
+      "default": "STRAND_UNSPECIFIED",
+      "description": "Indicates the associated DNA strand for some data item.\n\n - STRAND_UNSPECIFIED: If no strand data is available.\n - NEG_STRAND: The negative (-) strand.\n - POS_STRAND: The postive (+) strand."
+    }
+  }
+}

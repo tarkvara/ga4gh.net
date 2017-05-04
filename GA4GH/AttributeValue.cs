@@ -4,7 +4,7 @@ namespace GA4GH.Client {
 	/// values. Values are chosen from both internal protobuf types and GA4GH.
 	///  Values should be split into array elements instead of using a separator
 	/// syntax that needs to parsed.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class AttributeValue : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _stringValue;

@@ -1,7 +1,7 @@
 namespace GA4GH.Client {
 	/// <summary>Node in the annotation graph that annotates a contiguous region of a
 	/// sequence.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class Feature : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;
@@ -14,7 +14,7 @@ namespace GA4GH.Client {
 		private string _start;
 		private string _end;
 		private Strand? _strand;
-		private OntologyTerm _feature_type;
+		private OntologyTerm _featureType;
 		private Attributes _attributes;
 	
 		/// <summary>Id of this annotation node.</summary>
@@ -179,15 +179,15 @@ namespace GA4GH.Client {
 	
 		/// <summary>Feature that is annotated by this region.  Normally, this will be a term
 		/// in the Sequence Ontology.</summary>
-		[Newtonsoft.Json.JsonProperty("feature_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public OntologyTerm Feature_type
+		[Newtonsoft.Json.JsonProperty("featureType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public OntologyTerm FeatureType
 		{
-			get { return _feature_type; }
+			get { return _featureType; }
 			set 
 			{
-				if (_feature_type != value)
+				if (_featureType != value)
 				{
-					_feature_type = value; 
+					_featureType = value; 
 					RaisePropertyChanged();
 				}
 			}

@@ -28,10 +28,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GA4GHUtils.cs" />
+    <Compile Include="Age.cs" />
     <Compile Include="AlleleAnnotationService.cs" />
     <Compile Include="AlleleLocation.cs" />
     <Compile Include="Analysis.cs" />
     <Compile Include="AnalysisResult.cs" />
+    <Compile Include="AnnouncePeerRequest.cs" />
+    <Compile Include="AnnouncePeerResponse.cs" />
     <Compile Include="AttributeValue.cs" />
     <Compile Include="AttributeValueList.cs" />
     <Compile Include="Attributes.cs" />
@@ -41,20 +45,29 @@
     <Compile Include="CallSet.cs" />
     <Compile Include="CigarUnit.cs" />
     <Compile Include="CigarUnitOperation.cs" />
+    <Compile Include="Continuous.cs" />
+    <Compile Include="ContinuousSet.cs" />
     <Compile Include="Dataset.cs" />
+    <Compile Include="EnvironmentalContext.cs" />
+    <Compile Include="Evidence.cs" />
+    <Compile Include="EvidenceQuery.cs" />
     <Compile Include="Experiment.cs" />
     <Compile Include="ExpressionLevel.cs" />
     <Compile Include="ExpressionUnit.cs" />
     <Compile Include="ExternalIdentifier.cs" />
     <Compile Include="Feature.cs" />
+    <Compile Include="FeaturePhenotypeAssociation.cs" />
     <Compile Include="FeatureSet.cs" />
+    <Compile Include="GenotypePhenotypeService.cs" />
     <Compile Include="GetBiosampleRequest.cs" />
     <Compile Include="GetCallSetRequest.cs" />
+    <Compile Include="GetContinuousSetRequest.cs" />
     <Compile Include="GetDatasetRequest.cs" />
     <Compile Include="GetExpressionLevelRequest.cs" />
     <Compile Include="GetFeatureRequest.cs" />
     <Compile Include="GetFeatureSetRequest.cs" />
     <Compile Include="GetIndividualRequest.cs" />
+    <Compile Include="GetInfoResponse.cs" />
     <Compile Include="GetRNAQuantificationRequest.cs" />
     <Compile Include="GetRNAQuantificationSetRequest.cs" />
     <Compile Include="GetReadGroupSetRequest.cs" />
@@ -66,11 +79,17 @@
     <Compile Include="HGVSAnnotation.cs" />
     <Compile Include="Individual.cs" />
     <Compile Include="LinearAlignment.cs" />
+    <Compile Include="ListPeersRequest.cs" />
+    <Compile Include="ListPeersResponse.cs" />
     <Compile Include="ListReferenceBasesRequest.cs" />
     <Compile Include="ListReferenceBasesResponse.cs" />
     <Compile Include="MetadataService.cs" />
     <Compile Include="NullValue.cs" />
     <Compile Include="OntologyTerm.cs" />
+    <Compile Include="Peer.cs" />
+    <Compile Include="PeerService.cs" />
+    <Compile Include="PhenotypeAssociationSet.cs" />
+    <Compile Include="PhenotypeInstance.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProtobufListValue.cs" />
@@ -91,6 +110,10 @@
     <Compile Include="SearchBiosamplesResponse.cs" />
     <Compile Include="SearchCallSetsRequest.cs" />
     <Compile Include="SearchCallSetsResponse.cs" />
+    <Compile Include="SearchContinuousRequest.cs" />
+    <Compile Include="SearchContinuousResponse.cs" />
+    <Compile Include="SearchContinuousSetsRequest.cs" />
+    <Compile Include="SearchContinuousSetsResponse.cs" />
     <Compile Include="SearchDatasetsRequest.cs" />
     <Compile Include="SearchDatasetsResponse.cs" />
     <Compile Include="SearchExpressionLevelsRequest.cs" />
@@ -99,8 +122,14 @@
     <Compile Include="SearchFeatureSetsResponse.cs" />
     <Compile Include="SearchFeaturesRequest.cs" />
     <Compile Include="SearchFeaturesResponse.cs" />
+    <Compile Include="SearchGenotypePhenotypeRequest.cs" />
+    <Compile Include="SearchGenotypePhenotypeResponse.cs" />
     <Compile Include="SearchIndividualsRequest.cs" />
     <Compile Include="SearchIndividualsResponse.cs" />
+    <Compile Include="SearchPhenotypeAssociationSetsRequest.cs" />
+    <Compile Include="SearchPhenotypeAssociationSetsResponse.cs" />
+    <Compile Include="SearchPhenotypesRequest.cs" />
+    <Compile Include="SearchPhenotypesResponse.cs" />
     <Compile Include="SearchRNAQuantificationSetsRequest.cs" />
     <Compile Include="SearchRNAQuantificationSetsResponse.cs" />
     <Compile Include="SearchRNAQuantificationsRequest.cs" />
@@ -131,12 +160,14 @@
     <Compile Include="VariantService.cs" />
     <Compile Include="VariantSet.cs" />
     <Compile Include="VariantSetMetadata.cs" />
-    <Compile Include="GA4GHUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\BRCA\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\BRCA\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

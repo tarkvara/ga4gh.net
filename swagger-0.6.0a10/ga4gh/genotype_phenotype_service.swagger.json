@@ -1,0 +1,522 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ga4gh/genotype_phenotype_service.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v0.6.0a10/featurephenotypeassociations/search": {
+      "post": {
+        "summary": "Gets a list of genotype-phenotype assoications accessible through the API.\n`POST /featurephenotypeassociations/search` must accept a JSON version of\n`SearchPhenotypesRequest` as the post body and will return a JSON version\nof `SearchPhenotypeAssociationSetsResponse`.",
+        "operationId": "SearchPhenotypeAssociations",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchGenotypePhenotypeResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchGenotypePhenotypeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "GenotypePhenotypeService"
+        ]
+      }
+    },
+    "/v0.6.0a10/phenotypeassociationsets/search": {
+      "post": {
+        "summary": "Gets a list of association sets accessible through the API.\n`POST /phenotypeassociationsets/search` must accept a JSON version of\n`SearchPhenotypeAssociationSetsRequest` as the post body and will return a JSON version\nof `SearchPhenotypeAssociationSetsResponse`.",
+        "operationId": "SearchPhenotypeAssociationSets",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchPhenotypeAssociationSetsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchPhenotypeAssociationSetsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "GenotypePhenotypeService"
+        ]
+      }
+    },
+    "/v0.6.0a10/phenotypes/search": {
+      "post": {
+        "summary": "Gets a list of phenotypes accessible through the API.\n`POST /phenotypes/search` must accept a JSON version of\n`SearchPhenotypesRequest` as the post body and will return a JSON version\nof `SearchPhenotypeAssociationSetsResponse`.",
+        "operationId": "SearchPhenotype",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchPhenotypesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ga4ghSearchPhenotypesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "GenotypePhenotypeService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ga4ghEnvironmentalContext": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Environment ID."
+        },
+        "environment_type": {
+          "$ref": "#/definitions/ga4ghOntologyTerm",
+          "title": "Examples of some environment types could be drawn from:\nOntology for Biomedical Investigations (OBI): http://purl.obofoundry.org/obo/obi/browse\nChemical Entities of Interest (ChEBI): http://www.ontobee.org/browser/index.php?o=chebi\nEnvironment Ontology (ENVO):  http://www.ontobee.org/browser/index.php?o=ENVO\nAnatomy (Uberon): http://www.ontobee.org/browser/index.php?o=uberon"
+        },
+        "description": {
+          "type": "string",
+          "title": "A textual description of the environment. This is used to complement\nthe structured description in the environmentType field"
+        }
+      },
+      "description": "The context in which a genotype gives rise to a phenotype.\nThis is fairly open-ended; as a stub we have a simple ontology term.\nFor example, a controlled term for a drug, or perhaps an instance of a\ncomplex environment including temperature and air quality, or perhaps\nthe anatomical environment (gut vs tissue type vs whole organism)."
+    },
+    "ga4ghEvidence": {
+      "type": "object",
+      "properties": {
+        "evidence_type": {
+          "$ref": "#/definitions/ga4ghOntologyTerm",
+          "title": "ECO or OBI is recommended"
+        },
+        "description": {
+          "type": "string",
+          "title": "A textual description of the evidence. This is used to complement the\nstructured description in the evidence_type field"
+        },
+        "info": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/protobufListValue"
+          },
+          "description": "Additional annotation data in key-value pairs."
+        }
+      },
+      "description": "Evidence for the phenotype association.\nThis is also a stub for further expansion.  We should consider moving this into\nit's own schema."
+    },
+    "ga4ghEvidenceQuery": {
+      "type": "object",
+      "properties": {
+        "evidenceType": {
+          "$ref": "#/definitions/ga4ghOntologyTerm",
+          "title": "ECO or OBI is recommended"
+        },
+        "description": {
+          "type": "string",
+          "title": "The system may support regex. https://www.w3.org/TR/xpath-functions/#regex-syntax"
+        },
+        "external_identifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghExternalIdentifier"
+          },
+          "title": "Only match Evidence messages that have any of these external identifiers"
+        }
+      },
+      "description": "Evidence for the phenotype association."
+    },
+    "ga4ghExternalIdentifier": {
+      "type": "object",
+      "properties": {
+        "database": {
+          "type": "string",
+          "description": "The source of the identifier, e.g. `Ensembl`."
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The ID defined by the external database, e.g. `ENST00000000000`."
+        },
+        "version": {
+          "type": "string",
+          "description": "The version of the object or the database, e.g. `78`."
+        }
+      },
+      "title": "Identifier from a public database"
+    },
+    "ga4ghFeaturePhenotypeAssociation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "A unique identifier for the association."
+        },
+        "phenotype_association_set_id": {
+          "type": "string",
+          "description": "The ID of the PhenotypeAssociationSet this FeaturePhenotypeAssociation\nbelongs to."
+        },
+        "feature_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The set of features of the organism that bears the phenotype.\nThis could be as complete as a full complement of variants,\nor as minimal as the confirmed variants that are known causation\nfor the annotated phenotype.\nExamples of features could be variations at the nucleotide level,\nlarge rearrangements at the chromosome level, or relevant epigenetic\nmarkers.  Relevant genomic feature types are suggested to be\nthose typed in the Sequence Ontology (SO).\nThe feature set can have only one item, and must not be null."
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghEvidence"
+          },
+          "description": "The evidence for this specific instance of association between the\nfeatures and the phenotype."
+        },
+        "phenotype": {
+          "$ref": "#/definitions/ga4ghPhenotypeInstance",
+          "description": "The phenotypic component of this association."
+        },
+        "description": {
+          "type": "string",
+          "description": "A textual description of the association."
+        },
+        "environmental_contexts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghEnvironmentalContext"
+          },
+          "title": "The context in which the phenotype arises.\nMultiple contexts can be specified - these are assumed to all hold together"
+        },
+        "info": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/protobufListValue"
+          },
+          "description": "Additional annotation data in key-value pairs."
+        }
+      },
+      "description": "An association between one or more genomic features and a phenotype.\nThe instance of association allows us to link a feature to a phenotype,\nmultiple times, each bearing potentially different levels of confidence,\nsuch as resulting from alternative experiments and analysis."
+    },
+    "ga4ghOntologyTerm": {
+      "type": "object",
+      "properties": {
+        "term_id": {
+          "type": "string",
+          "description": "Ontology term identifier - the CURIE for an ontology term. It\ndiffers from the standard GA4GH schema's :ref:`id \u003capidesign_object_ids\u003e`\nin that it is a CURIE pointing to an information resource outside of the\nscope of the schema or its resource implementation."
+        },
+        "term": {
+          "type": "string",
+          "description": "Ontology term - the label of the ontology term the termId is pointing to."
+        }
+      },
+      "title": "An ontology term describing an attribute. (e.g. the phenotype attribute\n'polydactyly' from HPO)"
+    },
+    "ga4ghPhenotypeAssociationSet": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The phenotype association set ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "The phenotype association set name."
+        },
+        "dataset_id": {
+          "type": "string",
+          "description": "The ID of the dataset this phenotype association set belongs to."
+        },
+        "info": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/protobufListValue"
+          },
+          "description": "Optional additional information for this phenotype association set."
+        }
+      },
+      "description": "The top level container for phenotype association data."
+    },
+    "ga4ghPhenotypeInstance": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The Phenotype ID."
+        },
+        "type": {
+          "$ref": "#/definitions/ga4ghOntologyTerm",
+          "title": "HPO is recommended"
+        },
+        "qualifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghOntologyTerm"
+          },
+          "title": "PATO is recommended.  Often this qualifier might be for abnormal/normal,\nor severity.\nFor example, severe: http://purl.obolibrary.org/obo/PATO_0000396\nor abnormal: http://purl.obolibrary.org/obo/PATO_0000460"
+        },
+        "age_of_onset": {
+          "$ref": "#/definitions/ga4ghOntologyTerm",
+          "title": "HPO is recommended, for example, subclasses of\nhttp://www.human-phenotype-ontology.org/hpoweb/showterm?id=HP:0011007\nTODO: also allow quantitative recording?"
+        },
+        "description": {
+          "type": "string",
+          "description": "A textual description of the phenotype. This is used to complement the\nstructured phenotype description in the type field."
+        },
+        "info": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/protobufListValue"
+          },
+          "description": "Additional annotation data in key-value pairs."
+        }
+      },
+      "title": "An association to a phenotype and related information.\nThis record is intended primarily to be used in conjunction with variants, but\nthe record can also be composed with other kinds of entities such as diseases"
+    },
+    "ga4ghSearchGenotypePhenotypeRequest": {
+      "type": "object",
+      "properties": {
+        "phenotype_association_set_id": {
+          "type": "string",
+          "title": "The `PhenotypeAssociationSet` to search. Mandatory"
+        },
+        "feature_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "At least one feature_id or phenotype_id must be provided."
+        },
+        "phenotype_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Phenotype IDs"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghEvidenceQuery"
+          },
+          "title": "evidence"
+        },
+        "page_size": {
+          "type": "string",
+          "format": "int64",
+          "description": "Specifies the maximum number of results to return in a single page.\nIf unspecified, a system default will be used."
+        },
+        "page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nTo get the next page of results, set this parameter to the value of\n`nextPageToken` from the previous response."
+        }
+      },
+      "description": "This request maps to the body of `POST /featurephenotypeassociations/search` as JSON.\n\nThe goal here is to allow users to query using one or more of\nGenotype, Phenotype, Environment, and Evidence.\n\nA query using one of the above items is to mean, by default,\nthat the remainder of the query is as a \"wildcard\", such\nthat all matches to just that query term would come back.\nCombinations of the above are to act like AND rather than OR.\n\nThe \"genotype\" part of the query methods can be one or more\ngenomic features.  Associations can be made at many\nlevels of granularity (from whole genotypes down to individual\nSNVs), but users may use these methods with partial or\ninexact information.  Therefore, the query methods must be\nable to support query of some or all of the associated features.\nFurthermore, use of the relationships between genomic features\nmeans that when querying for a gene, any variants to that\ngene are also returned.  For example, a query with\nBRCA2 would mean that in addition to any direct associations\nto the BRCA2, all associations to sequence variants of BRCA2 would also\nbe returned.  Similarly, queries with OntologyTerms should perform\nthe subclass closure.\n\nEach query can be made against a string, an array of external\nidentifers (such as for gene or SNP ids), ontology term ids, or\nfull feature/phenotype/evidence objects."
+    },
+    "ga4ghSearchGenotypePhenotypeResponse": {
+      "type": "object",
+      "properties": {
+        "associations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghFeaturePhenotypeAssociation"
+          },
+          "description": "The list of matching FeaturePhenotypeAssociation."
+        },
+        "next_page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nProvide this value in a subsequent request to return the next page of\nresults. This field will be empty if there aren't any additional results."
+        }
+      },
+      "description": "This is the response from `POST /genotypephenotype/search` expressed as JSON."
+    },
+    "ga4ghSearchPhenotypeAssociationSetsRequest": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "title": "The `Dataset` to search. Mandatory"
+        },
+        "page_size": {
+          "type": "string",
+          "format": "int64",
+          "description": "Specifies the maximum number of results to return in a single page.\nIf unspecified, a system default will be used."
+        },
+        "page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nTo get the next page of results, set this parameter to the value of\n`nextPageToken` from the previous response."
+        }
+      },
+      "description": "This request maps to the body of `POST /phenotypeassociationsets/search` as JSON."
+    },
+    "ga4ghSearchPhenotypeAssociationSetsResponse": {
+      "type": "object",
+      "properties": {
+        "phenotype_association_sets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghPhenotypeAssociationSet"
+          },
+          "description": "The list of matching phenotype association sets."
+        },
+        "next_page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nProvide this value in a subsequent request to return the next page of\nresults. This field will be empty if there aren't any additional results."
+        }
+      },
+      "description": "This is the response from `POST /phenotypeassociationsets/search` expressed as JSON."
+    },
+    "ga4ghSearchPhenotypesRequest": {
+      "type": "object",
+      "properties": {
+        "phenotype_association_set_id": {
+          "type": "string",
+          "title": "The `PhenotypeAssociationSet` to search. Mandatory"
+        },
+        "id": {
+          "type": "string",
+          "title": "Phenotype ID\nTODO remove if a get-by-phenotype ID endpoint is added"
+        },
+        "description": {
+          "type": "string",
+          "title": "The system may support regex. https://www.w3.org/TR/xpath-functions/#regex-syntax"
+        },
+        "type": {
+          "$ref": "#/definitions/ga4ghOntologyTerm",
+          "title": "Only return results that match this type"
+        },
+        "qualifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghOntologyTerm"
+          },
+          "title": "terms should be OR'd together. e.g. (severe OR abnormal)"
+        },
+        "age_of_onset": {
+          "$ref": "#/definitions/ga4ghOntologyTerm",
+          "title": "Only return results that match this age of onset"
+        },
+        "page_size": {
+          "type": "string",
+          "format": "int64",
+          "description": "Specifies the maximum number of results to return in a single page.\nIf unspecified, a system default will be used."
+        },
+        "page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nTo get the next page of results, set this parameter to the value of\n`next_page_token` from the previous response."
+        }
+      }
+    },
+    "ga4ghSearchPhenotypesResponse": {
+      "type": "object",
+      "properties": {
+        "phenotypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ga4ghPhenotypeInstance"
+          },
+          "description": "The list of matching PhenotypeInstances."
+        },
+        "next_page_token": {
+          "type": "string",
+          "description": "The continuation token, which is used to page through large result sets.\nProvide this value in a subsequent request to return the next page of\nresults. This field will be empty if there aren't any additional results."
+        }
+      },
+      "description": "This is the response from `POST /phenotypes/search` expressed as JSON."
+    },
+    "googleprotobufNullValue": {
+      "type": "string",
+      "enum": [
+        "NULL_VALUE"
+      ],
+      "default": "NULL_VALUE",
+      "description": "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\n The JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value."
+    },
+    "protobufListValue": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufValue"
+          },
+          "description": "Repeated field of dynamically typed values."
+        }
+      },
+      "description": "`ListValue` is a wrapper around a repeated field of values.\n\nThe JSON representation for `ListValue` is JSON array."
+    },
+    "protobufStruct": {
+      "type": "object",
+      "properties": {
+        "fields": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/protobufValue"
+          },
+          "description": "Unordered map of dynamically typed values."
+        }
+      },
+      "description": "`Struct` represents a structured data value, consisting of fields\nwhich map to dynamically typed values. In some languages, `Struct`\nmight be supported by a native representation. For example, in\nscripting languages like JS a struct is represented as an\nobject. The details of that representation are described together\nwith the proto support for the language.\n\nThe JSON representation for `Struct` is JSON object."
+    },
+    "protobufValue": {
+      "type": "object",
+      "properties": {
+        "null_value": {
+          "$ref": "#/definitions/googleprotobufNullValue",
+          "description": "Represents a null value."
+        },
+        "number_value": {
+          "type": "number",
+          "format": "double",
+          "description": "Represents a double value."
+        },
+        "string_value": {
+          "type": "string",
+          "description": "Represents a string value."
+        },
+        "bool_value": {
+          "type": "boolean",
+          "format": "boolean",
+          "description": "Represents a boolean value."
+        },
+        "struct_value": {
+          "$ref": "#/definitions/protobufStruct",
+          "description": "Represents a structured value."
+        },
+        "list_value": {
+          "$ref": "#/definitions/protobufListValue",
+          "description": "Represents a repeated `Value`."
+        }
+      },
+      "description": "`Value` represents a dynamically typed value which can be either\nnull, a number, a string, a boolean, a recursive struct value, or a\nlist of values. A producer of value is expected to set one of that\nvariants, absence of any variant indicates an error.\n\nThe JSON representation for `Value` is JSON value."
+    }
+  }
+}

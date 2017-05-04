@@ -7,7 +7,7 @@ namespace GA4GH.Client {
 	/// with the proto support for the language.
 	/// 
 	/// The JSON representation for `Struct` is JSON object.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class ProtobufStruct : System.ComponentModel.INotifyPropertyChanged
 	{
 		private System.Collections.Generic.Dictionary<string, ProtobufValue> _fields;

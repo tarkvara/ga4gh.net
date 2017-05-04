@@ -2,7 +2,7 @@ namespace GA4GH.Client {
 	/// <summary>An analysis contains an interpretation of one or several experiments. (e.g.
 	/// SNVs, copy number variations, methylation status) together with information
 	/// about the methodology used.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class Analysis : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;

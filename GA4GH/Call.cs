@@ -5,7 +5,7 @@ namespace GA4GH.Client {
 	/// It may include associated information such as quality
 	/// and phasing. For example, a call might assign a probability of 0.32 to
 	/// the occurrence of a SNP named rs1234 in a call set with the name NA12345.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class Call : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _callSetName;

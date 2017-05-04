@@ -13,6 +13,7 @@ namespace SwaggerGA4GH {
 			{ "ga4gh/bio_metadata_service.swagger.json", "BioMetadataService" },
 			{ "ga4gh/genotype_phenotype_service.swagger.json", "GenotypePhenotypeService" },
 			{ "ga4gh/metadata_service.swagger.json", "MetadataService" },
+			{ "ga4gh/peer_service.swagger.json", "PeerService" },
 			{ "ga4gh/read_service.swagger.json", "ReadService" },
 			{ "ga4gh/reference_service.swagger.json", "ReferenceService" },
 			{ "ga4gh/rna_quantification_service.swagger.json", "RNAQuantificationService" },
@@ -24,9 +25,9 @@ namespace SwaggerGA4GH {
 			{ "    ", "\t" },
 			{ "\t#pragma warning disable // Disable all warnings\n", "" },
 			{ "public partial class", "public class" },
-			{ "partial void PrepareRequest(System.Net.Http.HttpClient request, string url);", "void PrepareRequest(System.Net.Http.HttpClient request, string url) {}" },
-			{ "partial void PrepareRequest(System.Net.Http.HttpClient request, System.Text.StringBuilder urlBuilder);", "void PrepareRequest(System.Net.Http.HttpClient request, System.Text.StringBuilder urlBuilder) {}" },
-			{ "partial void ProcessResponse(System.Net.Http.HttpClient request, System.Net.Http.HttpResponseMessage response);", "void ProcessResponse(System.Net.Http.HttpClient request, System.Net.Http.HttpResponseMessage response) {}" },
+			{ "partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);", "void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url) {}" },
+			{ "partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);", "void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder) {}" },
+			{ "partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);", "void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response) {}" },
 			{ "BaseUrl", "BaseURL" },
 			{ "Ga4gh", "" },
 			{ "Id\n", "ID\n" },
@@ -34,11 +35,12 @@ namespace SwaggerGA4GH {
 			{ "GoogleprotobufNullValue", "NullValue" },
 			{ "public string Int64Value", "public long? Int64Value" },
 			{ "private string _int64Value", "private long? _int64Value" },
+			{ "public string Age", "public string Value" },
 			{ "public string Position", "public string Value" },
 			{ "private string _baseUrl = \"\";", "private string _baseUrl = \"\";\n\t\tprivate string _version;" },
 			{ "(string baseUrl)", "(string baseUrl, string vers)" },
 			{ "BaseURL = baseUrl;", "BaseURL = baseUrl;\n\t\t\t_version = vers;" },
-			{ "urlBuilder_.Append(BaseURL).Append(\"/v0.6.0a9", "urlBuilder_.Append(BaseURL).Append('/').Append(_version).Append(\"" },
+			{ "urlBuilder_.Append(BaseURL).Append(\"/v0.6.0a10", "urlBuilder_.Append(BaseURL).Append('/').Append(_version).Append(\"" },
 			{ "[Newtonsoft.Json.JsonProperty(\"attributes\"", @"[Newtonsoft.Json.JsonProperty(""info"", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
 		public System.Collections.Generic.Dictionary<string, object[]> Info {
 			set {
@@ -51,6 +53,7 @@ namespace SwaggerGA4GH {
 		};
 
 		private static readonly string[] UnderscoredProperties = {
+			"age_class",
 			"age_of_onset",
 			"aligned_quality",
 			"aligned_read_count",
@@ -74,6 +77,8 @@ namespace SwaggerGA4GH {
 			"command_line",
 			"conf_interval_high",
 			"conf_interval_low",
+			"continuous_set_id",
+			"continuous_sets",
 			"dataset_id",
 			"double_value",
 			"duplicate_fragment",
@@ -90,13 +95,18 @@ namespace SwaggerGA4GH {
 			"feature_set_id",
 			"feature_set_ids",
 			"feature_sets",
+			"feature_type",
 			"feature_types",
+			"filters_applied",
+			"filters_failed",
+			"filtes_passed",
 			"fragment_length",
 			"fragment_name",
 			"gene_symbol",
 			"genotype_likelihood",
 			"hgvs_annotation",
 			"improper_placement",
+			"individual_age_at_collection",
 			"individual_id",
 			"instrument_data_file",
 			"instrument_model",
@@ -127,6 +137,7 @@ namespace SwaggerGA4GH {
 			"predicted_insert_size",
 			"prev_program_id",
 			"protein_location",
+			"protocol_version",
 			"raw_read_count",
 			"read_group_id",
 			"read_group_ids",
@@ -163,7 +174,8 @@ namespace SwaggerGA4GH {
 			"variant_id",
 			"variant_set_id",
 			"variant_set_ids",
-			"variant_sets"
+			"variant_sets",
+			"variant_type"
 		};
 
 		/// <summary>

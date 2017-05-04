@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{6E9527F1-00AB-45E7-9F8D-3FCA23D71DBD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BRCA Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../GA4GH/Age.cs">
     <Files>
-      <File FileName="BRCA Status" />
+      <File FileName="../GA4GH/Age.cs" Line="1" Column="1" />
+      <File FileName="App.xaml.cs" Line="36" Column="62" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -9,6 +10,7 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.BRCA.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F2709D1D-5854-4D72-8643-5C9213537E39" />
+  <MonoDevelop.Ide.ItemProperties.BRCA.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.D1A83AC9-0AD4-40E6-A6A4-7F3DCFA1FB5D" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.BRCA.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
 </Properties>

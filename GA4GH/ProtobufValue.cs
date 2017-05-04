@@ -5,7 +5,7 @@ namespace GA4GH.Client {
 	/// variants, absence of any variant indicates an error.
 	/// 
 	/// The JSON representation for `Value` is JSON value.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class ProtobufValue : System.ComponentModel.INotifyPropertyChanged
 	{
 		private NullValue? _nullValue;

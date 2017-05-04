@@ -2,7 +2,7 @@ namespace GA4GH.Client {
 	/// <summary>A VariantAnnotationSet record groups VariantAnnotation records. It is derived
 	/// from a VariantSet and holds information describing the software and reference
 	/// data used in the annotation.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class VariantAnnotationSet : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;

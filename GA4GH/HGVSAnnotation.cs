@@ -7,7 +7,7 @@ namespace GA4GH.Client {
 	///	lies within a transcript
 	///  - Descriptions at protein level should be provided when the allele
 	///	lies within the translated sequence or stop codon.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class HGVSAnnotation : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _genomic;

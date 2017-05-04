@@ -4,7 +4,7 @@ namespace GA4GH.Client {
 	/// course experiment would be described by a RNAQuantificationSet with the
 	/// individual RNASeq experiments of the time point being represented as the
 	/// member RNAQuantifications.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class RNAQuantificationSet : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;

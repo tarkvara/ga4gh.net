@@ -1,6 +1,6 @@
 namespace GA4GH.Client {
 	/// <summary>This request maps to the URL `GET /features/{id}`.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class GetFeatureRequest : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _featureId;

@@ -5,7 +5,7 @@ namespace GA4GH.Client {
 	/// If a reference is specified, all queried `ReadGroup`s must be aligned
 	/// to `ReferenceSet`s containing that same `Reference`. If no reference is
 	/// specified, all `ReadGroup`s must be aligned to the same `ReferenceSet`.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class SearchReadsRequest : System.ComponentModel.INotifyPropertyChanged
 	{
 		private System.Collections.ObjectModel.ObservableCollection<string> _readGroupIds;

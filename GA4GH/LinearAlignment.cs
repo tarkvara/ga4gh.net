@@ -1,7 +1,7 @@
 namespace GA4GH.Client {
 	/// <summary>A linear alignment describes the alignment of a read to a Reference, using a
 	/// position and CIGAR array.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class LinearAlignment : System.ComponentModel.INotifyPropertyChanged
 	{
 		private Position _position;

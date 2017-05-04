@@ -2,7 +2,7 @@ namespace GA4GH.Client {
 	/// <summary>A Dataset is a collection of related data of multiple types.
 	/// Data providers decide how to group data into datasets.
 	/// See [Metadata API](../api/metadata.html) for a more detailed discussion.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class Dataset : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;

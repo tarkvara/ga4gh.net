@@ -1,6 +1,6 @@
 namespace GA4GH.Client {
 	/// <summary>A single CIGAR operation.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class CigarUnit : System.ComponentModel.INotifyPropertyChanged
 	{
 		private CigarUnitOperation? _operation;

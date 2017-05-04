@@ -1,5 +1,5 @@
 namespace GA4GH.Client {
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public enum ExpressionUnit
 	{
 		[System.Runtime.Serialization.EnumMember(Value = "EXPRESSION_UNIT_UNSPECIFIED")]

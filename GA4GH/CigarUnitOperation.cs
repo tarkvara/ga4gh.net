@@ -38,7 +38,7 @@ namespace GA4GH.Client {
 	/// alignment match to the reference, but a sequence mismatch. This can
 	/// indicate a SNP or a read error. This operator is equivalent to SAM's
 	/// `X`.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public enum CigarUnitOperation
 	{
 		[System.Runtime.Serialization.EnumMember(Value = "OPERATION_UNSPECIFIED")]

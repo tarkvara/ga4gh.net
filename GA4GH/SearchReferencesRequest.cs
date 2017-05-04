@@ -1,7 +1,7 @@
 namespace GA4GH.Client {
 	/// <summary>****************  /references  *******************
 	/// This request maps to the body of `POST /references/search` as JSON.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class SearchReferencesRequest : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _referenceSetId;

@@ -3,7 +3,7 @@ namespace GA4GH.Client {
 	/// For example, a variant could represent a SNP or an insertion.
 	/// Variants belong to a `VariantSet`.
 	/// This is equivalent to a row in VCF.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class Variant : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;
@@ -18,6 +18,13 @@ namespace GA4GH.Client {
 		private System.Collections.ObjectModel.ObservableCollection<string> _alternateBases;
 		private Attributes _attributes;
 		private System.Collections.ObjectModel.ObservableCollection<Call> _calls;
+		private string _variantType;
+		private string _svlen;
+		private System.Collections.ObjectModel.ObservableCollection<int> _cipos;
+		private System.Collections.ObjectModel.ObservableCollection<int> _ciend;
+		private bool? _filtersApplied;
+		private bool? _filters_passed;
+		private System.Collections.ObjectModel.ObservableCollection<string> _filtersFailed;
 	
 		/// <summary>The variant ID.</summary>
 		[Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -214,6 +221,110 @@ namespace GA4GH.Client {
 				if (_calls != value)
 				{
 					_calls = value; 
+					RaisePropertyChanged();
+				}
+			}
+		}
+	
+		[Newtonsoft.Json.JsonProperty("variantType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public string VariantType
+		{
+			get { return _variantType; }
+			set 
+			{
+				if (_variantType != value)
+				{
+					_variantType = value; 
+					RaisePropertyChanged();
+				}
+			}
+		}
+	
+		[Newtonsoft.Json.JsonProperty("svlen", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public string Svlen
+		{
+			get { return _svlen; }
+			set 
+			{
+				if (_svlen != value)
+				{
+					_svlen = value; 
+					RaisePropertyChanged();
+				}
+			}
+		}
+	
+		[Newtonsoft.Json.JsonProperty("cipos", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public System.Collections.ObjectModel.ObservableCollection<int> Cipos
+		{
+			get { return _cipos; }
+			set 
+			{
+				if (_cipos != value)
+				{
+					_cipos = value; 
+					RaisePropertyChanged();
+				}
+			}
+		}
+	
+		[Newtonsoft.Json.JsonProperty("ciend", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public System.Collections.ObjectModel.ObservableCollection<int> Ciend
+		{
+			get { return _ciend; }
+			set 
+			{
+				if (_ciend != value)
+				{
+					_ciend = value; 
+					RaisePropertyChanged();
+				}
+			}
+		}
+	
+		/// <summary>True if filters were applied for this variant. VCF column 7 "FILTER"
+		/// any value other than the missing value.</summary>
+		[Newtonsoft.Json.JsonProperty("filtersApplied", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public bool? FiltersApplied
+		{
+			get { return _filtersApplied; }
+			set 
+			{
+				if (_filtersApplied != value)
+				{
+					_filtersApplied = value; 
+					RaisePropertyChanged();
+				}
+			}
+		}
+	
+		/// <summary>True if all filters for this variant passed. VCF column 7 "FILTER"
+		/// value PASS.</summary>
+		[Newtonsoft.Json.JsonProperty("filters_passed", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public bool? Filters_passed
+		{
+			get { return _filters_passed; }
+			set 
+			{
+				if (_filters_passed != value)
+				{
+					_filters_passed = value; 
+					RaisePropertyChanged();
+				}
+			}
+		}
+	
+		/// <summary>Zero or more filters that failed for this variant. VCF column 7 "FILTER"
+		/// shared across all alleles in the same VCF record.</summary>
+		[Newtonsoft.Json.JsonProperty("filtersFailed", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public System.Collections.ObjectModel.ObservableCollection<string> FiltersFailed
+		{
+			get { return _filtersFailed; }
+			set 
+			{
+				if (_filtersFailed != value)
+				{
+					_filtersFailed = value; 
 					RaisePropertyChanged();
 				}
 			}

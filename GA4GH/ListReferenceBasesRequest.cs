@@ -1,7 +1,7 @@
 namespace GA4GH.Client {
 	/// <summary>This request retrieves a region of a reference genome when sent to 
 	/// the `/listreferencebases` endpoint.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class ListReferenceBasesRequest : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _referenceId;

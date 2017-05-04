@@ -4,7 +4,7 @@ namespace GA4GH.Client {
 	/// `Reference` might represent the human chromosome 1, for instance.
 	/// 
 	/// `Reference` s are designed to be immutable.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class Reference : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;
@@ -65,7 +65,7 @@ namespace GA4GH.Client {
 			}
 		}
 	
-		/// <summary>The name of this reference. (e.g. '22').</summary>
+		/// <summary>The unique name of this reference within the Reference Set (e.g. '22').</summary>
 		[Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
 		public string Name
 		{

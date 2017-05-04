@@ -1,6 +1,6 @@
 namespace GA4GH.Client {
 	/// <summary>This request maps to the body of `POST /features/search` as JSON.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class SearchFeaturesRequest : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _featureSetId;
@@ -134,7 +134,7 @@ namespace GA4GH.Client {
 	
 		/// <summary>TODO: To be replaced with a fully featured ontology search
 		/// once the Metadata definitions are rounded out.
-		/// If specified, this query matches only annotations whose `feature_type`
+		/// If specified, this query matches only annotations whose `featureType`
 		/// matches one of the provided ontology terms.</summary>
 		[Newtonsoft.Json.JsonProperty("featureTypes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
 		public System.Collections.ObjectModel.ObservableCollection<string> FeatureTypes

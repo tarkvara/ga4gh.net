@@ -1,7 +1,7 @@
 namespace GA4GH.Client {
 	/// <summary>A VariantSet is a collection of variants and variant calls intended to be
 	/// analyzed together.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class VariantSet : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;

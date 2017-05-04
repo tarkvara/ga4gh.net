@@ -1,6 +1,6 @@
 namespace GA4GH.Client {
 	/// <summary>ReadStats can be used to provide summary statistics about read data.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class ReadStats : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _alignedReadCount;

@@ -1,7 +1,7 @@
 namespace GA4GH.Client {
 	/// <summary>A `VariantAnnotation` record represents the result of comparing a variant to
 	/// a set of reference data.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class VariantAnnotation : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;

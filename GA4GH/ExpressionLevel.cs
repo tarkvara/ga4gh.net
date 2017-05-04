@@ -1,11 +1,10 @@
 namespace GA4GH.Client {
 	/// <summary>The actual numerical quantification for each feature.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class ExpressionLevel : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _id;
 		private string _name;
-		private string _featureId;
 		private string _rnaQuantificationId;
 		private double? _rawReadCount;
 		private double? _expression;
@@ -39,20 +38,6 @@ namespace GA4GH.Client {
 				if (_name != value)
 				{
 					_name = value; 
-					RaisePropertyChanged();
-				}
-			}
-		}
-	
-		[Newtonsoft.Json.JsonProperty("featureId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public string FeatureID
-		{
-			get { return _featureId; }
-			set 
-			{
-				if (_featureId != value)
-				{
-					_featureId = value; 
 					RaisePropertyChanged();
 				}
 			}

@@ -2,11 +2,11 @@ namespace GA4GH.Client {
 	/// <summary>****************  /expressionlevels/search  *******************
 	/// This request maps to the body of 'POST /expressionlevels/search'
 	/// as JSON.</summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.9.6275.22295")]
+	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "8.34.6331.29178")]
 	public class SearchExpressionLevelsRequest : System.ComponentModel.INotifyPropertyChanged
 	{
 		private string _rnaQuantificationId;
-		private System.Collections.ObjectModel.ObservableCollection<string> _featureIds;
+		private System.Collections.ObjectModel.ObservableCollection<string> _names;
 		private double? _threshold;
 		private int? _pageSize;
 		private string _pageToken;
@@ -26,16 +26,16 @@ namespace GA4GH.Client {
 			}
 		}
 	
-		/// <summary>Only return expressions with any of the specified featureIds.</summary>
-		[Newtonsoft.Json.JsonProperty("featureIds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public System.Collections.ObjectModel.ObservableCollection<string> FeatureIds
+		/// <summary>Only return expressions with any of the names (strict string matching).</summary>
+		[Newtonsoft.Json.JsonProperty("names", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+		public System.Collections.ObjectModel.ObservableCollection<string> Names
 		{
-			get { return _featureIds; }
+			get { return _names; }
 			set 
 			{
-				if (_featureIds != value)
+				if (_names != value)
 				{
-					_featureIds = value; 
+					_names = value; 
 					RaisePropertyChanged();
 				}
 			}
