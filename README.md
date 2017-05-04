@@ -1,5 +1,5 @@
 # ga4gh.net
-# .NET bindings for the Global Alliance for Genomics and Health (GA4GH) API.
+## .NET bindings for the Global Alliance for Genomics and Health (GA4GH) API
 
 Details of the GA4GH API are at https://ga4gh-schemas.readthedocs.io/en/latest/. Currently based on version 0.6.0a10 of the GA4GH .proto files.
 
